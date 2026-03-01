@@ -64,7 +64,9 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-            margin: 20px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
         }
 
         .light .okno {
@@ -72,7 +74,6 @@
             border-color: #fff #808080 #808080 #fff;
             border-radius: 0;
             backdrop-filter: none;
-            box-shadow: none;
             padding: 2px;
         }
 
@@ -83,15 +84,16 @@
             justify-content: space-between;
             align-items: center;
             user-select: none;
+            flex-wrap: nowrap; 
         }
 
-        .ovladani-apple { display: flex; gap: 8px; }
-        .tecka { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); }
+        .ovladani-apple { display: flex; gap: 6px; flex-shrink: 0; }
+        .tecka { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); }
         .t1 { background: #ff5f56; }
         .t2 { background: #ffbd2e; }
         .t3 { background: #27c93f; }
 
-        .ovladani-win { display: none; gap: 2px; }
+        .ovladani-win { display: none; gap: 2px; flex-shrink: 0; }
         .win-btn {
             width: 16px;
             height: 14px;
@@ -108,17 +110,29 @@
 
         .light .ovladani-apple { display: none; }
         .light .ovladani-win { display: flex; }
-        .light .win-nadpis { color: white; font-weight: bold; font-family: "MS Sans Serif", sans-serif; font-size: 13px; flex-grow: 1; margin-left: 5px; }
+        
+        .win-nadpis { 
+            color: white; 
+            font-weight: bold; 
+            font-family: "MS Sans Serif", sans-serif; 
+            font-size: 11px; 
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0 8px;
+        }
 
         .prepinac-modu {
             background: var(--akcent);
             color: white;
             border: 1px solid rgba(255,255,255,0.3);
-            padding: 3px 10px;
+            padding: 4px 8px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .light .prepinac-modu {
@@ -130,7 +144,7 @@
         }
 
         .obsah {
-            padding: 25px;
+            padding: 20px;
             max-height: 85vh;
             overflow-y: auto;
         }
@@ -138,16 +152,17 @@
         .profil-box {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 15px;
+            margin-bottom: 25px;
         }
 
         .fotka {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             border: 3px solid var(--akcent);
             object-fit: cover;
+            flex-shrink: 0;
         }
 
         .light .fotka { border-radius: 0; border: 2px solid #000; }
@@ -155,7 +170,7 @@
         .sekce-karta {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--okraj);
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             margin-bottom: 20px;
         }
@@ -167,26 +182,80 @@
             border-radius: 0;
         }
 
+        
         .grid-servery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .slot {
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px dashed var(--okraj);
-            min-height: 250px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            gap: 15px;
         }
 
-        .light .slot { background: #c0c0c0; border: 1px solid #808080; border-radius: 0; }
+        .server-row {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--okraj);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap; 
+        }
+
+        .light .server-row {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #808080 #fff #fff #808080;
+            border-radius: 0;
+        }
+
+        .server-info-left {
+            text-align: center;
+            width: 120px;
+            flex-shrink: 0;
+        }
+
+        .server-info-left small {
+            display: block;
+            font-size: 10px;
+            margin-bottom: 5px;
+            opacity: 0.8;
+        }
+
+        .server-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--akcent);
+            object-fit: cover;
+        }
+
+        .server-content {
+            flex-grow: 1;
+            min-width: 200px;
+        }
+
+        .server-content h4 { margin: 0 0 5px 0; color: var(--akcent); }
+        .server-content p { margin: 0; font-size: 13px; opacity: 0.9; line-height: 1.4; }
+
+        .btn-join {
+            background: var(--akcent);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 13px;
+            white-space: nowrap;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .light .btn-join {
+            background: #c0c0c0;
+            color: #000;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            border-radius: 0;
+        }
 
         .btn-form {
             display: block;
@@ -208,7 +277,8 @@
             background: rgba(0,0,0,0.3);
             padding: 15px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
+            gap: 10px;
         }
 
         .copyright-symbol {
@@ -219,9 +289,13 @@
             padding-bottom: 10px;
         }
 
+        
         @media (max-width: 600px) {
             .profil-box { flex-direction: column; text-align: center; }
-            .socialy { flex-direction: column; gap: 10px; text-align: center; }
+            .socialy { flex-direction: column; text-align: center; }
+            .win-nadpis { display: none; } 
+            .server-row { justify-content: center; text-align: center; }
+            .server-info-left { width: 100%; }
         }
     </style>
 </head>
@@ -239,12 +313,12 @@
         
         <div class="win-nadpis">C:\Users\MatyHubert\moje_projekty.exe</div>
         
-        <div style="display: flex; gap: 10px; align-items: center;">
+        <div style="display: flex; gap: 8px; align-items: center; flex-shrink: 0;">
             <button id="prepinac" class="prepinac-modu">Změnit motiv</button>
             <div class="ovladani-win">
                 <div class="win-btn">_</div>
                 <div class="win-btn">□</div>
-                <div class="win-btn" style="margin-left: 2px;">X</div>
+                <div class="win-btn" style="margin-left: 1px;">X</div>
             </div>
         </div>
     </div>
@@ -253,9 +327,9 @@
         <div class="profil-box">
             <img src="Profilovka.jpg" alt="Maty Hubert" class="fotka">
             <div>
-                <h1 style="margin:0;">Maty Hubert :D</h1>
-                <p style="margin:5px 0; opacity:0.8;">Discord & Telegram Bot Developer</p>
-                <p style="margin:0; font-size:14px;">📅 Aktivní: Víkendy + Večery</p>
+                <h2 style="margin:0;">Maty Hubert :D</h2>
+                <p style="margin:3px 0; opacity:0.8; font-size: 14px;">Discord & Telegram Bot Developer</p>
+                <p style="margin:0; font-size:12px;">📅 Aktivní: Víkendy + Večery</p>
             </div>
         </div>
 
@@ -267,35 +341,43 @@
         <div class="sekce-karta">
             <h3>Aktuální projekty & Servery 🤖</h3>
             <div class="grid-servery">
-                <div class="slot" style="border-style: solid; border-color: var(--akcent); border-width: 2px;">
-                    
-                    <iframe src="https://discord.com/widget?id=1311375845583097897&theme=dark" width="100%" height="300" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                <!-- PRVNÍ SERVER: GAME -->
+                <div class="server-row">
+                    <div class="server-info-left">
+                        <small>Profilovka serveru:</small>
+                        <img src="GameFoto.jpg" alt="Game" class="server-icon">
+                    </div>
+                    <div class="server-content">
+                        <h4>Game</h4>
+                        <p>Hlavní komunitní server pro hraní a zábavu. Tady najdeš moje nejnovější boty v akci!</p>
+                        <a href="https://discord.gg/EjRdU2mY47" target="_blank" class="btn-join">Připojit na server</a>
+                    </div>
                 </div>
-                <div class="slot">
-                    <h4 style="margin:0;">Volné místo :(</h4>
-                    <p style="font-size: 14px; opacity: 0.7;">Zatím nikdo další nevyužil moje služby...</p>
-                    <span style="font-size: 40px;">😢</span>
-                </div>
-                <div class="slot">
-                    <h4 style="margin:0;">Volné místo :(</h4>
-                    <span style="font-size: 40px; margin-top: 10px;">☁️</span>
-                </div>
-                <div class="slot">
-                    <h4 style="margin:0;">Volné místo :(</h4>
-                    <span style="font-size: 40px; margin-top: 10px;">🔒</span>
+
+                <!-- DRUHÝ SERVER: VOLNÝ -->
+                <div class="server-row" style="opacity: 0.7;">
+                    <div class="server-info-left">
+                        <small>Profilovka serveru:</small>
+                        <div style="width:60px; height:60px; border-radius:50%; border:2px dashed var(--okraj); display:inline-flex; align-items:center; justify-content:center; font-size:24px;">?</div>
+                    </div>
+                    <div class="server-content">
+                        <h4>Volné místo</h4>
+                        <p>Zatím zde není žádný další projekt. Chceš být další?</p>
+                        <span class="btn-join" style="background: gray; opacity: 0.5;">Nedostupné</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="sekce-karta">
             <h3>Ostatní věci 🚀</h3>
-            <p>Kromě botů dělám i na jiných věcech, jako je třeba <b>Lumatrix</b> a další menší weby. Vždycky se snažím, aby to bylo funkční a vypadalo to k světu!</p>
+            <p>Kromě botů dělám i na jiných věcech, jako je třeba <b>Lumatrix</b>. Vždycky se snažím, aby to bylo funkční!</p>
             <a href="https://lukiamaty.github.io/Lumatrix/" target="_blank" style="color:var(--akcent); font-weight: bold;">👉 Navštívit Lumatrix</a>
         </div>
 
         <div class="sekce-karta">
             <h3>Cena & Spolupráce 💰</h3>
-            <p>Cena není pevná, všechno záleží na tom, jak moc složitého bota chceš. Domluvíme se až po vyplnění formuláře!</p>
+            <p>Cena není pevná, všechno záleží na tvých požadavcích. Domluvíme se po vyplnění formuláře!</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8ZdHiZScuRCrou5hvk4UXR33DgGM_2nsIDpQGKV_9DrDRLg/viewform?usp=publish-editor" target="_blank" class="btn-form">VYPLNIT FORMULÁŘ PRO ZÁJEMCE</a>
         </div>
 
@@ -313,8 +395,12 @@
 <script>
     const platno = document.getElementById("matrix_rain");
     const kresleni = platno.getContext("2d");
-    platno.width = window.innerWidth;
-    platno.height = window.innerHeight;
+    
+    function nastavitVelikost() {
+        platno.width = window.innerWidth;
+        platno.height = window.innerHeight;
+    }
+    nastavitVelikost();
 
     const pismena = "01010101XY#%&*@$+-".split("");
     const rohlik = 16;
@@ -351,10 +437,7 @@
         localStorage.setItem("tema_nastaveni", html_tag.classList.contains("light") ? "svetlo" : "tma");
     });
 
-    window.addEventListener("resize", () => {
-        platno.width = window.innerWidth;
-        platno.height = window.innerHeight;
-    });
+    window.addEventListener("resize", nastavitVelikost);
 </script>
 
 </body>

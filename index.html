@@ -411,7 +411,7 @@
             const r = await fetch(`https://discord.com/api/guilds/${SERVER_ID}/widget.json`);
             const d = await r.json();
             document.getElementById('on-val').innerText = d.presence_count;
-            document.getElementById('off-val').innerText = d.members ? "Několik" : "Zadej ID";
+            document.getElementById('off-val').innerText = d.members ? "Několik" : "Musis se pripojit aby jsi to vedel!";
         } catch(e) {
             document.getElementById('on-val').innerText = "Vypnuto";
             document.getElementById('off-val').innerText = "Widget";

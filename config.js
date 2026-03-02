@@ -1,8 +1,8 @@
 const WEB_CONFIG = {
     version: "2.1",
-    total_slots: 10,
-    reserved_slots: 2,
-    taken_slots: 3,
+    total_slots: 5,
+    reserved_slots: 3,
+    taken_slots: 2,
     form_link: "https://docs.google.com/forms/d/e/1FAIpQLSd8ZdHiZScuRCrou5hvk4UXR33DgGM_2nsIDpQGKV_9DrDRLg/viewform",
     servers: [
         {

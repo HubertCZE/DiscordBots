@@ -2,11 +2,12 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Maty Hubert | Portfólio</title>
     <link rel="icon" type="image/jpeg" href="Profilovka.jpg">
     <script src="config.js"></script>
     <style>
+        * { box-sizing: border-box; }
         :root {
             --barva-text: #ffffff;
             --barva-pozadi: #000000;
@@ -37,7 +38,7 @@
             transition: background 0.3s;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -56,7 +57,7 @@
         .light canvas { display: none; }
         .okno {
             width: 95%;
-            max-width: 1000px; /* Zvětšeno */
+            max-width: 1000px;
             background: var(--okno-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
@@ -64,7 +65,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-            margin: 10px;
+            margin: 20px auto;
             display: flex;
             flex-direction: column;
         }
@@ -77,26 +78,26 @@
         }
         .lista {
             background: var(--lista-bg);
-            padding: 12px 20px; /* Zvětšeno menu */
+            padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             user-select: none;
         }
         .ovladani-apple { display: flex; gap: 8px; flex-shrink: 0; }
-        .tecka { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); }
+        .tecka { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); }
         .t1 { background: #ff5f56; }
         .t2 { background: #ffbd2e; }
         .t3 { background: #27c93f; }
-        .lista-vpravo { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
+        .lista-vpravo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
         .ovladani-win { display: none; gap: 2px; flex-shrink: 0; }
         .win-btn {
-            width: 20px;
-            height: 18px;
+            width: 18px;
+            height: 16px;
             background: #c0c0c0;
             border: 2px solid;
             border-color: #fff #808080 #808080 #fff;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: bold;
             display: flex;
             justify-content: center;
@@ -110,38 +111,38 @@
             color: white; 
             font-weight: bold; 
             font-family: "MS Sans Serif", sans-serif; 
-            font-size: 13px; /* Zvětšeno */
+            font-size: 11px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            margin: 0 15px;
+            margin: 0 10px;
             flex-grow: 1;
         }
         .system-time {
             font-family: "MS Sans Serif", "Segoe UI", sans-serif;
-            font-size: 12px;
+            font-size: 11px;
             color: white;
             background: rgba(0,0,0,0.3);
-            padding: 5px 12px;
-            border-radius: 6px;
-            min-width: 160px;
+            padding: 4px 8px;
+            border-radius: 5px;
+            min-width: 130px;
             text-align: right;
-            line-height: 1.3;
+            line-height: 1.2;
         }
         .light .system-time {
             background: #c0c0c0;
             color: black;
             border: 2px inset #fff;
-            padding: 2px 6px;
+            padding: 2px 4px;
         }
         .prepinac-modu {
             background: var(--akcent);
             color: white;
             border: 1px solid rgba(255,255,255,0.3);
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 5px 10px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
         }
         .light .prepinac-modu {
@@ -151,22 +152,23 @@
             border-color: #fff #808080 #808080 #fff;
             border-radius: 0;
         }
-        .obsah { padding: 30px; max-height: 85vh; overflow-y: auto; }
-        .profil-box { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .obsah { padding: 20px; overflow-y: auto; }
+        .profil-box { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; }
         .fotka {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 4px solid var(--akcent);
+            border: 3px solid var(--akcent);
             object-fit: cover;
             flex-shrink: 0;
         }
         .sekce-karta {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--okraj);
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            width: 100%;
         }
         .light .sekce-karta {
             background: #d0d0d0;
@@ -176,12 +178,13 @@
         }
         .stats-top {
             display: flex;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
             margin-bottom: 15px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
             background: rgba(0,0,0,0.2);
-            padding: 10px 15px;
+            padding: 10px;
             border-radius: 8px;
         }
         .stat-v { color: var(--zelena); }
@@ -197,7 +200,6 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            flex-wrap: wrap; 
         }
         .light .server-row {
             background: #c0c0c0;
@@ -205,87 +207,92 @@
             border-color: #808080 #fff #fff #808080;
             border-radius: 0;
         }
-        .server-info-left { text-align: center; width: 120px; flex-shrink: 0; }
-        .server-icon { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--akcent); object-fit: cover; }
-        .server-content { flex-grow: 1; min-width: 200px; }
-        .server-content h4 { margin: 0 0 5px 0; color: var(--akcent); font-size: 18px; }
-        .server-content p { margin: 0; font-size: 14px; opacity: 0.9; line-height: 1.4; }
+        .server-info-left { text-align: center; width: 80px; flex-shrink: 0; }
+        .server-icon { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--akcent); object-fit: cover; }
+        .server-content { flex-grow: 1; }
+        .server-content h4 { margin: 0 0 5px 0; color: var(--akcent); font-size: 17px; }
+        .server-content p { margin: 0; font-size: 13px; opacity: 0.9; line-height: 1.4; }
         .btn-join {
             background: var(--akcent);
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 8px;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             display: inline-block;
             margin-top: 10px;
         }
         .btn-join.inactive { background: gray; opacity: 0.5; pointer-events: none; }
-        .light .btn-join {
-            background: #c0c0c0;
-            color: #000;
-            border: 2px solid;
-            border-color: #fff #808080 #808080 #fff;
-            border-radius: 0;
-        }
-        .form-area { margin: 20px 0; }
+        .form-area { margin: 15px 0; }
         .btn-form {
             display: block;
             background: #db4437;
             color: white;
             text-align: center;
-            padding: 18px;
+            padding: 15px;
             text-decoration: none;
             border-radius: 10px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
         }
         .form-full-msg {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             background: rgba(255,255,255,0.05);
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
-            font-size: 15px;
-            border-left: 5px solid var(--cervena);
+            font-size: 13px;
+            border-left: 4px solid var(--cervena);
+            flex-wrap: wrap;
         }
-        .verim-link { color: #0a84ff; text-decoration: underline; font-weight: bold; cursor: pointer; margin-left: auto; }
+        .verim-link { color: #0a84ff; text-decoration: underline; font-weight: bold; cursor: pointer; }
         .back-btn-sq {
             display: inline-flex;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: #c0c0c0;
-            border: 3px solid;
+            border: 2px solid;
             border-color: #fff #808080 #808080 #fff;
             align-items: center;
             justify-content: center;
             color: black;
             text-decoration: none;
             font-weight: bold;
-            font-size: 24px;
+            font-size: 20px;
             flex-shrink: 0;
         }
         .socialy {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
             background: rgba(0,0,0,0.3);
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 14px;
         }
         .footer-text {
             text-align: center;
-            font-size: 18px;
-            margin-top: 40px;
-            padding-bottom: 30px;
+            font-size: 14px;
+            margin-top: 30px;
+            padding-bottom: 20px;
         }
-        @media (max-width: 600px) {
-            .profil-box, .socialy, .server-row { flex-direction: column; text-align: center; }
-            .win-nadpis, .system-info, .system-time { display: none; }
+        
+        /* MOBILNÍ SKÁLOVÁNÍ */
+        @media (max-width: 650px) {
+            .okno { width: 98%; margin: 10px auto; border-radius: 8px; }
+            .lista { padding: 8px 10px; }
+            .win-nadpis, .system-time { display: none; }
+            .profil-box { flex-direction: column; text-align: center; gap: 10px; }
+            .fotka { width: 90px; height: 90px; }
+            .obsah { padding: 15px; }
+            .server-row { flex-direction: column; text-align: center; }
+            .server-info-left { width: 100%; }
             .form-full-msg { flex-direction: column; text-align: center; }
-            .verim-link { margin-left: 0; margin-top: 10px; }
+            .verim-link { margin-left: 0; margin-top: 5px; display: block; }
+            .socialy { flex-direction: column; text-align: center; gap: 10px; }
         }
     </style>
 </head>
@@ -302,7 +309,7 @@
         <div class="lista-vpravo">
             <div class="system-time">
                 <div id="date-display">00.00.0000</div>
-                <div id="clock-display" style="font-weight: bold; font-size: 14px;">00:00:00</div>
+                <div id="clock-display" style="font-weight: bold;">00:00:00</div>
             </div>
             <button id="prepinac" class="prepinac-modu">Mód</button>
             <div class="ovladani-win">
@@ -316,14 +323,14 @@
         <div class="profil-box">
             <img src="Profilovka.jpg" alt="Maty Hubert" class="fotka">
             <div>
-                <h2 style="margin:0; font-size: 28px;">Maty Hubert</h2>
-                <p style="margin:3px 0; opacity:0.8; font-size: 16px;">Discord & Telegram Bot Developer</p>
-                <p style="margin:0; font-size:14px;">📅 Aktivní: Víkendy + Večery</p>
+                <h2 style="margin:0; font-size: 24px;">Maty Hubert</h2>
+                <p style="margin:3px 0; opacity:0.8; font-size: 15px;">Discord & Telegram Bot Developer</p>
+                <p style="margin:0; font-size:13px;">📅 Aktivní: Víkendy + Večery</p>
             </div>
         </div>
 
         <div class="sekce-karta">
-            <h3>Aktuální projekty & Servery 🤖</h3>
+            <h3 style="margin-top:0;">Aktuální projekty & Servery 🤖</h3>
             <div class="stats-top">
                 <span class="stat-v">Volná místa: <span id="slots-free">0</span></span>
                 <span class="stat-r">Zarezervováno: <span id="slots-res">0</span></span>
@@ -333,7 +340,7 @@
         </div>
 
         <div class="sekce-karta">
-            <h3>Cena & Spolupráce 💰</h3>
+            <h3 style="margin-top:0;">Cena & Spolupráce 💰</h3>
             <div id="form-container" class="form-area"></div>
         </div>
 
@@ -355,12 +362,15 @@
         platno.width = window.innerWidth;
         platno.height = window.innerHeight;
     }
+    window.addEventListener('resize', nastavitVelikost);
     nastavitVelikost();
+    
     const pismena = "01010101XY#%&*@$+-".split("");
     const rohlik = 16;
-    const sloupce = platno.width / rohlik;
-    const kapky = [];
+    let sloupce = platno.width / rohlik;
+    let kapky = [];
     for (let i = 0; i < sloupce; i++) kapky[i] = 1;
+
     function prset() {
         kresleni.fillStyle = "rgba(0, 0, 0, 0.05)";
         kresleni.fillRect(0, 0, platno.width, platno.height);
@@ -377,19 +387,21 @@
 
     function updateClock() {
         const now = new Date();
-        document.getElementById('date-display').innerText = now.toLocaleDateString('cs-CZ');
-        document.getElementById('clock-display').innerText = now.toLocaleTimeString('cs-CZ');
+        const dateEl = document.getElementById('date-display');
+        const clockEl = document.getElementById('clock-display');
+        if(dateEl) dateEl.innerText = now.toLocaleDateString('cs-CZ');
+        if(clockEl) clockEl.innerText = now.toLocaleTimeString('cs-CZ');
     }
     setInterval(updateClock, 1000);
     updateClock();
 
-    const tlacitko = document.getElementById("prepinac");
-    const html_tag = document.documentElement;
-    tlacitko.addEventListener("click", () => {
-        html_tag.classList.toggle("light");
+    document.getElementById("prepinac").addEventListener("click", () => {
+        document.documentElement.classList.toggle("light");
     });
 
     function initWeb() {
+        if (typeof WEB_CONFIG === 'undefined') return;
+        
         const free = WEB_CONFIG.total_slots - WEB_CONFIG.reserved_slots - WEB_CONFIG.taken_slots;
         document.getElementById('slots-free').innerText = free;
         document.getElementById('slots-res').innerText = WEB_CONFIG.reserved_slots;
@@ -398,12 +410,13 @@
         document.getElementById('v-footer').innerText = WEB_CONFIG.version;
 
         const serverList = document.getElementById('server-list');
+        serverList.innerHTML = '';
         WEB_CONFIG.servers.forEach(s => {
             const row = document.createElement('div');
             row.className = 'server-row';
             row.innerHTML = `
                 <div class="server-info-left">
-                    <img src="${s.image}" class="server-icon">
+                    <img src="${s.image}" class="server-icon" onerror="this.src='https://via.placeholder.com/60'">
                 </div>
                 <div class="server-content">
                     <h4>${s.name}</h4>
@@ -422,9 +435,11 @@
         } else {
             formCont.innerHTML = `
                 <div class="form-full-msg">
-                    <a href="#" class="back-btn-sq">←</a>
-                    <span>Všechny místa jsou zarezervované/vybrané, zkus to jindy.</span>
-                    <span class="verim-link" onclick="window.open('${WEB_CONFIG.form_link}')">Ja si verim a na limity neverim!</span>
+                    <a href="#" class="back-btn-sq" onclick="return false;">←</a>
+                    <div style="flex:1">
+                        Všechny místa jsou zarezervované/vybrané, zkus to jindy. 
+                        <span class="verim-link" onclick="window.open('${WEB_CONFIG.form_link}')">Ja si verim a na limity neverim!</span>
+                    </div>
                 </div>
             `;
         }

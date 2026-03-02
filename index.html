@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maty Hubert | Portfólio</title>
+    <link rel="icon" type="image/jpeg" href="Profilovka.jpg">
+    <script src="config.js"></script>
     <style>
         :root {
             --barva-text: #ffffff;
@@ -83,14 +85,7 @@
         .t1 { background: #ff5f56; }
         .t2 { background: #ffbd2e; }
         .t3 { background: #27c93f; }
-        
-        .lista-vpravo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-
+        .lista-vpravo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
         .ovladani-win { display: none; gap: 2px; flex-shrink: 0; }
         .win-btn {
             width: 16px;
@@ -119,6 +114,22 @@
             margin: 0 8px;
             flex-grow: 1;
         }
+        .system-time {
+            font-family: "MS Sans Serif", "Segoe UI", sans-serif;
+            font-size: 11px;
+            color: white;
+            background: rgba(0,0,0,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            min-width: 140px;
+            text-align: right;
+        }
+        .light .system-time {
+            background: #c0c0c0;
+            color: black;
+            border: 2px inset #fff;
+            padding: 1px 4px;
+        }
         .prepinac-modu {
             background: var(--akcent);
             color: white;
@@ -128,8 +139,6 @@
             cursor: pointer;
             font-size: 10px;
             font-weight: bold;
-            flex-shrink: 0;
-            white-space: nowrap;
         }
         .light .prepinac-modu {
             background: #c0c0c0;
@@ -138,17 +147,8 @@
             border-color: #fff #808080 #808080 #fff;
             border-radius: 0;
         }
-        .obsah {
-            padding: 20px;
-            max-height: 85vh;
-            overflow-y: auto;
-        }
-        .profil-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
+        .obsah { padding: 20px; max-height: 85vh; overflow-y: auto; }
+        .profil-box { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
         .fotka {
             width: 80px;
             height: 80px;
@@ -157,7 +157,6 @@
             object-fit: cover;
             flex-shrink: 0;
         }
-        .light .fotka { border-radius: 0; border: 2px solid #000; }
         .sekce-karta {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--okraj);
@@ -171,11 +170,14 @@
             border-color: #808080 #fff #fff #808080;
             border-radius: 0;
         }
-        .grid-servery {
+        .stats-top {
             display: flex;
-            flex-direction: column;
             gap: 15px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 14px;
         }
+        .grid-servery { display: flex; flex-direction: column; gap: 15px; }
         .server-row {
             background: rgba(0,0,0,0.3);
             border: 1px solid var(--okraj);
@@ -192,43 +194,18 @@
             border-color: #808080 #fff #fff #808080;
             border-radius: 0;
         }
-        .server-info-left {
-            text-align: center;
-            width: 120px;
-            flex-shrink: 0;
-        }
-        .server-info-left small {
-            display: block;
-            font-size: 10px;
-            margin-bottom: 5px;
-            opacity: 0.8;
-        }
-        .server-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid var(--akcent);
-            object-fit: cover;
-        }
-        .server-content {
-            flex-grow: 1;
-            min-width: 200px;
-        }
+        .server-info-left { text-align: center; width: 120px; flex-shrink: 0; }
+        .server-icon { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--akcent); object-fit: cover; }
+        .server-content { flex-grow: 1; min-width: 200px; }
         .server-content h4 { margin: 0 0 5px 0; color: var(--akcent); }
         .server-content p { margin: 0; font-size: 13px; opacity: 0.9; line-height: 1.4; }
-        
-        .status-badge {
+        .server-stats-badge {
+            font-size: 10px;
             display: flex;
-            gap: 10px;
-            margin: 8px 0;
-            font-size: 11px;
-            font-weight: bold;
+            gap: 8px;
+            margin: 5px 0;
+            opacity: 0.8;
         }
-        .status-item { display: flex; align-items: center; gap: 4px; }
-        .status-dot { width: 7px; height: 7px; border-radius: 50%; }
-        .online { background: #23a55a; }
-        .offline { background: #80848e; }
-
         .btn-join {
             background: var(--akcent);
             color: white;
@@ -237,10 +214,10 @@
             border-radius: 6px;
             font-weight: bold;
             font-size: 13px;
-            white-space: nowrap;
             display: inline-block;
             margin-top: 10px;
         }
+        .btn-join.inactive { background: gray; opacity: 0.5; pointer-events: none; }
         .light .btn-join {
             background: #c0c0c0;
             color: #000;
@@ -248,6 +225,7 @@
             border-color: #fff #808080 #808080 #fff;
             border-radius: 0;
         }
+        .form-area { margin: 20px 0; }
         .btn-form {
             display: block;
             background: #db4437;
@@ -257,9 +235,30 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: bold;
-            margin: 20px 0;
         }
-        .light .btn-form { border-radius: 0; border: 2px solid; border-color: #fff #808080 #808080 #fff; }
+        .form-full-msg {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,0,0,0.1);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .verim-link { color: #0a84ff; text-decoration: underline; font-weight: bold; cursor: pointer; }
+        .back-btn {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
         .socialy {
             display: flex;
             justify-content: space-between;
@@ -267,22 +266,16 @@
             padding: 15px;
             border-radius: 8px;
             font-size: 13px;
-            gap: 10px;
         }
-        .copyright-symbol {
+        .footer-text {
             text-align: center;
-            font-size: 12px;
-            opacity: 0.5;
-            margin-top: 20px;
-            padding-bottom: 10px;
+            font-size: 16px;
+            margin-top: 30px;
+            padding-bottom: 20px;
         }
         @media (max-width: 600px) {
-            .profil-box { flex-direction: column; text-align: center; }
-            .socialy { flex-direction: column; text-align: center; }
-            .win-nadpis { display: none; } 
-            .server-row { justify-content: center; text-align: center; }
-            .server-info-left { width: 100%; }
-            .status-badge { justify-content: center; }
+            .profil-box, .socialy, .server-row { flex-direction: column; text-align: center; }
+            .win-nadpis, .system-time { display: none; }
         }
     </style>
 </head>
@@ -295,9 +288,10 @@
             <div class="tecka t2"></div>
             <div class="tecka t3"></div>
         </div>
-        <div class="win-nadpis">C:\Users\MatyHubert\moje_projekty.exe</div>
+        <div class="win-nadpis">C:\Users\MatyHubert\portfolio_v<span id="v-title">0</span>.exe</div>
         <div class="lista-vpravo">
-            <button id="prepinac" class="prepinac-modu">Změnit motiv</button>
+            <div id="clock" class="system-time">00:00:00</div>
+            <button id="prepinac" class="prepinac-modu">Mód</button>
             <div class="ovladani-win">
                 <div class="win-btn">_</div>
                 <div class="win-btn">□</div>
@@ -314,60 +308,32 @@
                 <p style="margin:0; font-size:12px;">📅 Aktivní: Víkendy + Večery</p>
             </div>
         </div>
+
         <div class="sekce-karta">
-            <h3>Kdo jsem a co dělám? 👨‍💻</h3>
-            <p>Jsem Maty a programování botů mě fakt baví. Moje hlavní pravidlo je férovost. Hosting u mě máš v ceně, takže se o nic nestaráš. Kdybych někdy končil, dám vědět minimálně měsíc nebo dva dopředu! :D</p>
-        </div>
-        <div class="sekce-karta">
-            <h3>Aktuální projekty & Servery 🤖</h3>
-            <div class="grid-servery">
-                <div class="server-row">
-                    <div class="server-info-left">
-                        <small>Profilovka serveru:</small>
-                        <img src="GameFoto.jpg" alt="Game" class="server-icon">
-                    </div>
-                    <div class="server-content">
-                        <h4>Game</h4>
-                        <div class="status-badge">
-                            <div class="status-item"><div class="status-dot online"></div> Online: <span id="on-val">...</span></div>
-                            <div class="status-item"><div class="status-dot offline"></div> Offline: <span id="off-val">...</span></div>
-                        </div>
-                        <p>Hlavní komunitní server pro hraní a zábavu. Tady najdeš moje nejnovější boty v akci!</p>
-                        <a href="https://discord.gg/EjRdU2mY47" target="_blank" class="btn-join">Připojit na server</a>
-                    </div>
-                </div>
-                <div class="server-row" style="opacity: 0.7;">
-                    <div class="server-info-left">
-                        <small>Profilovka serveru:</small>
-                        <div style="width:60px; height:60px; border-radius:50%; border:2px dashed var(--okraj); display:inline-flex; align-items:center; justify-content:center; font-size:24px;">?</div>
-                    </div>
-                    <div class="server-content">
-                        <h4>Volné místo</h4>
-                        <p>Zatím zde není žádný další projekt. Chceš být další?</p>
-                        <span class="btn-join" style="background: gray; opacity: 0.5;">Nedostupné</span>
-                    </div>
-                </div>
+            <div class="stats-top">
+                <span>Volná místa: <span id="slots-free">0</span></span>
+                <span>Zarezervováno: <span id="slots-res">0</span></span>
             </div>
+            <h3>Aktuální projekty & Servery 🤖</h3>
+            <div id="server-list" class="grid-servery"></div>
         </div>
-        <div class="sekce-karta">
-            <h3>Ostatní věci 🚀</h3>
-            <p>Kromě botů dělám i na jiných věcech, jako je třeba <b>Lumatrix</b>. Vždycky se snažím, aby to bylo funkční!</p>
-            <a href="https://lukiamaty.github.io/Lumatrix/" target="_blank" style="color:var(--akcent); font-weight: bold;">👉 Navštívit Lumatrix</a>
-        </div>
+
         <div class="sekce-karta">
             <h3>Cena & Spolupráce 💰</h3>
-            <p>Na tvorbě botů nechci vydělávat – dělám to, protože mě to baví. Peníze si beru pouze na pokrytí nákladů za <b>hosting</b>. Pokud se ti ale moje práce bude líbit, dýško klidně beru! A když to půjde, udělám to zadarmo :D</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8ZdHiZScuRCrou5hvk4UXR33DgGM_2nsIDpQGKV_9DrDRLg/viewform?usp=publish-editor" target="_blank" class="btn-form">VYPLNIT FORMULÁŘ PRO ZÁJEMCE</a>
+            <div id="form-container" class="form-area"></div>
         </div>
+
         <div class="socialy">
-            <span>📧 Email: <b>matyhoboti@gmail.com</b></span>
-            <span>👾 Discord: <b>hubert_cze</b> </span>
+            <span>📧 <b>matyhoboti@gmail.com</b></span>
+            <span>👾 <b>hubert_cze</b></span>
         </div>
-        <div class="copyright-symbol">
-            ® MatyHubert
+
+        <div class="footer-text">
+            <b>®MatyHubert | Verze webu: <span id="v-footer">0</span></b>
         </div>
     </div>
 </div>
+
 <script>
     const platno = document.getElementById("matrix_rain");
     const kresleni = platno.getContext("2d");
@@ -394,31 +360,65 @@
         }
     }
     setInterval(prset, 40);
+
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('clock').innerText = now.toLocaleTimeString('cs-CZ');
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
     const tlacitko = document.getElementById("prepinac");
     const html_tag = document.documentElement;
-    if (localStorage.getItem("tema_nastaveni") === "svetlo") {
-        html_tag.classList.add("light");
-    }
     tlacitko.addEventListener("click", () => {
         html_tag.classList.toggle("light");
-        localStorage.setItem("tema_nastaveni", html_tag.classList.contains("light") ? "svetlo" : "tma");
     });
-    window.addEventListener("resize", nastavitVelikost);
 
-    const SERVER_ID = "1268571691236818985";
-    async function updateStatus() {
-        try {
-            const r = await fetch(`https://discord.com/api/guilds/${SERVER_ID}/widget.json`);
-            const d = await r.json();
-            document.getElementById('on-val').innerText = d.presence_count;
-            document.getElementById('off-val').innerText = d.members ? "Několik" : "Musis se pripojit aby jsi to vedel!";
-        } catch(e) {
-            document.getElementById('on-val').innerText = "Vypnuto";
-            document.getElementById('off-val').innerText = "Widget";
+    function initWeb() {
+        const free = WEB_CONFIG.total_slots - WEB_CONFIG.reserved_slots - WEB_CONFIG.taken_slots;
+        document.getElementById('slots-free').innerText = free;
+        document.getElementById('slots-res').innerText = WEB_CONFIG.reserved_slots;
+        document.getElementById('v-title').innerText = WEB_CONFIG.version;
+        document.getElementById('v-footer').innerText = WEB_CONFIG.version;
+
+        const serverList = document.getElementById('server-list');
+        WEB_CONFIG.servers.forEach(s => {
+            const row = document.createElement('div');
+            row.className = 'server-row';
+            row.innerHTML = `
+                <div class="server-info-left">
+                    <img src="${s.image}" class="server-icon">
+                </div>
+                <div class="server-content">
+                    <h4>${s.name}</h4>
+                    <div class="server-stats-badge">
+                        <span>Místa: ${WEB_CONFIG.total_slots}</span> | 
+                        <span>Rezervace: ${s.reserved}</span> | 
+                        <span>Obsazeno: ${s.taken}</span>
+                    </div>
+                    <p>${s.description}</p>
+                    <a href="${s.link}" target="_blank" class="btn-join ${s.button_active ? '' : 'inactive'}">
+                        ${s.button_active ? 'Připojit na server' : 'Nedostupné'}
+                    </a>
+                </div>
+            `;
+            serverList.appendChild(row);
+        });
+
+        const formCont = document.getElementById('form-container');
+        if (free > 0) {
+            formCont.innerHTML = `<a href="${WEB_CONFIG.form_link}" target="_blank" class="btn-form">VYPLNIT FORMULÁŘ PRO ZÁJEMCE</a>`;
+        } else {
+            formCont.innerHTML = `
+                <div class="form-full-msg">
+                    <a href="#" class="back-btn">←</a>
+                    <span>Všechny místa jsou zarezervované/vybrané, zkus to jindy. <span class="verim-link" onclick="window.open('${WEB_CONFIG.form_link}')">Ja si verim a na limity neverim!</span></span>
+                </div>
+            `;
         }
     }
-    updateStatus();
-    setInterval(updateStatus, 60000);
+
+    window.onload = initWeb;
 </script>
 </body>
 </html>
